@@ -1,7 +1,6 @@
 import numpy as np
 
 # Part 1
-
 def trapezoid_rule(fn, a, b, n):
     delta_x = (b - a)/n
     x = np.linspace(a, b, n)
@@ -10,6 +9,7 @@ def trapezoid_rule(fn, a, b, n):
         xi = a + (i+1) * delta_x
         sum += fn(xi)
     return delta_x * ( 0.5 * fn(x[0]) + sum + 0.5 * fn(x[n-1]))
+
 
 def simpsons_rule(fn, a, b, n):
     # https://www.wolframalpha.com/input?i=integral+from+0+to+1+of+4+*+%281-x**2%29+**+0.5+using+simpson+rule+at+10+iteration 
@@ -41,8 +41,20 @@ def simpsons_rule(fn, a, b, n):
     
     return (delta_x / 3) * (fx0 + sum1 + sum2 + fxn)
 
-#part 2
 
+def midpoint_rule(fn, a, b, n):
+    # https://www.wolframalpha.com/input?i=integral+from+0+to+1+of+4+*+%281-x**2%29+**+0.5+using+midpoint+rule+at+10+iteration
+    # also slightly off
+    delta_x = (b - a)/n
+    x = np.linspace(a, b, n)
+    sum = 0
+    for i in range(0, len(x)):
+        xi = a + (2*(i+1) - 1) * delta_x * 0.5
+        sum += fn(xi)
+    return delta_x * sum
+
+
+#part 2
 def arctan(x,N):
     result=0.0
     for n in range(1,N+1):
@@ -64,17 +76,6 @@ def madhava_series(N):
         result=count+result
     
     return np.sqrt(12)*result
-
-def midpoint_rule(fn, a, b, n):
-    # https://www.wolframalpha.com/input?i=integral+from+0+to+1+of+4+*+%281-x**2%29+**+0.5+using+midpoint+rule+at+10+iteration
-    # also slightly off
-    delta_x = (b - a)/n
-    x = np.linspace(a, b, n)
-    sum = 0
-    for i in range(0, len(x)):
-        xi = a + (2*(i+1) - 1) * delta_x * 0.5
-        sum += fn(xi)
-    return delta_x * ( 0.5 * fn(x[0]) + sum + 0.5 * fn(x[n-1]))
 
 
 # Part 3
