@@ -101,3 +101,24 @@ if __name__ == "__main__":
     print(f"\t\tdiffrence of arctan to machins formula:{errordiff_2b_2c}")
     print("Madhavas gives a closer approximation in 10 or less intervals compared to Arcsin")
     print()
+
+
+    # part 3
+    print("="*42)
+    print("part 3:\n\tMonte Carlo integrations")
+    print("="*42)
+    print()
+    
+    # mc_area
+    print("\tMonte Carlo integration of circle in a square")
+    pi_3_area = mc_area(100)
+    pi_3_area_error = pi - pi_3_area
+    print(f"\t\tresult: {pi_3_area}\n\t\terror: {pi_3_area_error}")
+    print()
+
+        # mc_area
+    print("\tMonte Carlo integration of cone in a sphere")
+    pi_3_volume = mc_volume(100)
+    pi_3_volume_error = pi - pi_3_volume
+    print(f"\t\tresult: {pi_3_volume}\n\t\terror: {pi_3_volume_error}")
+    print()

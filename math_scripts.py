@@ -1,4 +1,7 @@
 import numpy as np
+from numpy.random import MT19937
+from numpy.random import RandomState, SeedSequence
+rs = RandomState(MT19937(SeedSequence(42)))
 
 # Part 1
 def trapezoid_rule(fn, a, b, n):
@@ -113,7 +116,7 @@ def mc_area(N):
         outputs:
             arr: an array of random points of dimension N by dim
         '''
-        basic_array = np.random.rand(N, dim) # array of random values from 0 to 1
+        basic_array = rs.rand(N, dim) # array of random values from 0 to 1
 
         # arange elements to range from -1 to 1
         array = (basic_array - 0.5*np.ones((N, dim))) * 2
@@ -190,7 +193,7 @@ def mc_volume(N):
         outputs:
             arr: an array of random points of dimension N by dim
         '''         
-        basic_array = np.random.rand(N, dim) # array of random values from 0 to 1
+        basic_array = rs.rand(N, dim) # array of random values from 0 to 1
         # arange all elements from -1 to 1
         array = (basic_array - 0.5*np.ones((N, dim))) * 2
         # z was actually supposed to be from 0 to 2, so we will bad every value (-1 to 1) by +1
@@ -224,6 +227,4 @@ def mc_volume(N):
     return pi
         
 if __name__ == "__main__":
-    from equations import equations
-    eqi, eqii = equations[0], equations[1]
-    midpoint_rule(eqii,-1,1, 1000)
+    pass
